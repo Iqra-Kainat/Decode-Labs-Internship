@@ -1,0 +1,47 @@
+-- Query 1
+SELECT * FROM orders;
+
+-- Query 2
+SELECT Product, Quantity, TotalPrice
+FROM orders;
+
+-- Query 3
+SELECT *
+FROM orders
+WHERE PaymentMethod = 'Online';
+-- Query 4.1: Sort orders by TotalPrice (Highest to Lowest)
+SELECT *
+FROM orders
+ORDER BY TotalPrice DESC;
+-- Query 4.2: Sort orders by TotalPrice (Lowest to Highest)
+SELECT *
+FROM orders
+ORDER BY TotalPrice ASC;
+-- Query 4.3: Sort products alphabetically
+SELECT Product, Quantity, TotalPrice
+FROM orders
+ORDER BY Product ASC;
+-- Query 4.4: Sort by Quantity
+SELECT Product, Quantity, TotalPrice
+FROM orders
+ORDER BY Quantity DESC;
+-- Query 5.1: Count orders by payment method
+SELECT PaymentMethod,
+       COUNT(*) AS TotalOrders
+FROM orders
+GROUP BY PaymentMethod;
+-- Query 5.2: Total quantity sold for each product
+SELECT Product,
+       SUM(Quantity) AS TotalQuantitySold
+FROM orders
+GROUP BY Product;
+-- Query 5.3: Average total price by product
+SELECT Product,
+       AVG(TotalPrice) AS AverageOrderValue
+FROM orders
+GROUP BY Product;
+-- Query 5.4: Count orders by order status
+SELECT OrderStatus,
+       COUNT(*) AS TotalOrders
+FROM orders
+GROUP BY OrderStatus;
